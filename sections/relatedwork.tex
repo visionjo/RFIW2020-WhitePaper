@@ -1,0 +1,36 @@
+%% Multi-PIE setting 2
+\begin{table*}[t!]
+    \centering
+   
+    \caption{Counts for T-1: number of unique pairs (\textbf{P}), families (\textbf{F}), and face samples (\textbf{S}), with an increase in counts and types since~\cite{robinson2017recognizing}.}
+    \scriptsize
+    \begin{adjustbox}{width=\linewidth}
+    \begin{tabular}{p{.1in}m{.1in}m{.29in}m{.29in}m{.29in}m{.29in}m{.29in}m{.29in}m{.29in}m{.29in}m{.29in}m{.29in}m{.29in}|m{.29in}}
+    % \toprule
+    & & BB& SS&SIBS& FD &FS & MD &MS & GFGD & GFGS &GMGD & GMGS& Total\\\hline
+     \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Train}}}&\textbf{P} & 991  & 1,029 &1,588 & 712 & 721& 736& 716 & 136 & 124 & 116 & 114 &6,983\\
+    % \multirow{3}{*}{Train}&\textbf{P} &  &  & &&&&&&&&\\
+    \multirow{3}{*}{} &\textbf{F}  &303 & 304 & 286 & 401 & 404 & 399 & 402 & 81 & 73&71 & 66 &2790\\
+    \multirow{3}{*}{} &\textbf{S} &39,608& 27,844 & 35,337& 30,746  &46,583 & 29,778&  46,969& 2,003 &  2,097  &1,741 & 1,834  &264,540\\\hline
+    
+    \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{val}}} &\textbf{P}  & 433 & 433 & 206& 220 & 261 & 200 & 234 & 53 & 48 & 56 & 42 & 2,186 \\
+    
+    \multirow{3}{*}{} &\textbf{F}  &74  & 57& 90 & 134& 135& 124& 130& 32& 29& 36&27 &868\\
+    \multirow{3}{*}{} &\textbf{S}  & 8,340 & 5,982 & 21,204& 7,575 &9,399&8,441 &7,587 & 762 &879 & 714 & 701 & 71,584\\\hline
+    
+
+
+    \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{test}}} &\textbf{P}  &  469& 469 & 217 & 202& 257 & 230 & 237 & 40 & 31 & 36 & 33&2,221 \\
+    \multirow{3}{*}{} &\textbf{F}  & 149  & 150  & 89 & 126 & 133 & 136 & 132 & 22 & 21 & 20 & 22 & 1,190\\
+    \multirow{3}{*}{} &\textbf{S}  & 3,459 &2,956 &967 &3,019&3,273&3,184& 2,660 &121&96&71&84&39,743\\\hline
+    
+    \end{tabular}\label{tbl:track1:counts} 
+    \end{adjustbox}
+    \vspace{-5mm}
+\end{table*}
+
+\section{Related Works}
+% \subsection{Kinship Recognition}
+Kinship recognition, as seen in the machine vision, started in~\cite{fang2010towards}, where minimal data and low-level features set the stage for the task of kinship verification between parents and child. Soon thereafter, \cite{xia2012understanding} took a gender specific view of the problem-- moreover, the problem was viewed as a low rank transfer subspace problem, where the source and target are set as faces of the parent at younger and older ages, respectively~\cite{shao2012low}. Family101~\cite{fang2013kinship} was the first facial image dataset with family tree labels; at about the same time, KinWild~\cite{lu2014neighborhood} was released and used to organize data challenges~\cite{lu2015fg}. The task of tri-subject kinship verification (\ie Track 2), was inspired by the work that came next, in~\cite{qin2015tri}, for which data (\ie TS-Kin) and benchmarks were released. Until the release of \ac{fiw} in 2016~\cite{robinson2016families}, deep learning models were not widely applied to the kin-based domain, with the minimal exception (\ie \cite{zhang12kinship}), as the data capacity of their more complex machinery was not met by previous datasets. 
+As part of the first \ac{rfiw}~\cite{robinson2017recognizing}), 
+\ac{fiw} was further extended~\cite{robinson2018visual, wang2017kinship}, making ever more kin-based problems possible to approach~\cite{gao2019will, mingaaai2020}. A major focus of this (\ie \ac{rfiw} 2020) is to establish a record of state-of-the-art for the latest-and-greatest version of the \ac{fiw} image-set.
