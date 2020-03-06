@@ -16,10 +16,8 @@
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage{balance}
-\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks, citecolor=blue, linkcolor=red, filecolor=magenta, urlcolor=blue]{hyperref}
+\usepackage[pagebackref=true,breaklinks=true, colorlinks, citecolor=blue, linkcolor=red, filecolor=magenta, urlcolor=blue]{hyperref}
 
-
-\usepackage{subfigure}
 
 \def\etc{\latinabbrev{etc}.}
 
@@ -29,7 +27,6 @@
 \acrodef{fg}[FG]{15$^{th}$ IEEE International Conference on Automatic Face and Gesture Recognition}
 
 
-% \newcommand{\etal}{\textit{et al}. }
 \newcommand{\ie}{\textit{i}.\textit{e}., }
 \newcommand{\eg}{\textit{e}.\textit{g}., }
 \acrodef{gnn}[GNN]{graphical neural network}
@@ -76,7 +73,6 @@
 
 \newcommand{\tabitem}{~~\llap{\textbullet}~~} %%% bullet in table
 
-%\newcommand*{\etc}{etc.\@\xspace}%
 \acrodef{fiw}[FIW]{\textit{Families In the Wild}}
 \acrodef{tsk}[TSKIN]{\textit{Tri-Subject Kinship}}
 
@@ -96,20 +92,12 @@
 \acrodef{roc}[ROC]{receiver operating characteristic}
 \acrodef{nrml}[NRML]{Neighborhood Repulsed Metric Learning}
 
-% \def\FGPaperID{1\vspace{10mm}} % *** Enter the FG2020 Paper ID here
 \definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
 	
 \title{\LARGE \bf
 \ac{rfiw}: The 4th Edition
 }
 
-%use this in case of a single affiliation
-%\author{\parbox{16cm}{\centering
-%    {\large Huibert Kwakernaak}\\
-%    {\normalsize
-%    Faculty of Electrical Engineering, Mathematics and Computer Science, University of Twente, Enschede, The Netherlands\\}}
-%    \thanks{This work was not supported by any organization.}% <-this % stops a space
-%}
 
 %use this in case of several affiliations
 \author{\parbox{16cm}{\centering
@@ -120,7 +108,6 @@
     
     }
     }
-    % \thanks{This work was not supported by any organization}% <-this % stops a space
 }
 
 
@@ -158,14 +145,7 @@
 
 \input{sections/relatedwork}
 
-
-
-
-
-
-
-% \subsection{Face Evaluations}
-\section{Task Evaluations, Protocols, Benchmarks}\label{sec:kinver}
+\section{Task Evaluations, Protocols, Benchmarks}\label{sec:task:eval}
 \ac{rfiw} 2020 supported three tasks: kinship verification (T-1), tri-subject verification (T-2), and search \& retrieval of family members for missing children (T-3). We next describe each task separately, following the same outline: the problem statement and motivation, data splits and protocols, and benchmark experiments (\ie baselines). A brief section on experimental settings common to all tasks precedes the detailed descriptions of each task in separate subsections.
 
 
@@ -181,38 +161,18 @@ The \ac{fiw} dataset provides the most extensive set of face pairs for kin-based
 \begin{table*}[t]
 \scriptsize
 \centering
-\caption {Averaged verification accuracy scores for T-1 of \ac{rfiw}.}%\vspace{-2mm}
+\caption {Averaged verification accuracy scores for T-1 of \ac{rfiw}.}
 \label{tab:benchmark:track1}
 \begin{tabular}{r|cccc|cccc|ccc|c}
-%   \toprule
   Methods & FD & FS & MD & MS & GFGD & GFGS & GMGD & GMGS & BB & SS & SIBS & Avg. \\
-
   \midrule
   Sphereface~\cite{Liu_2017_CVPR} (baseline) & 0.61 & 0.66 & 0.69 & 0.62 & 0.66 &0.71& 0.73 & \textbf{0.68} & 0.57 & 0.64 & 0.50 & 0.64\\
     stefhoer~\cite{id2} & \textbf{0.77} & 0.80 & 0.77 & \textbf{0.78} & 0.70 & \textbf{0.73} & 0.64 & 0.60 & 0.66 & 0.65 & 0.76 & 0.74\\
      ustc-nelslip~\cite{id6} & 0.76 & 0.82 & 0.75 & 0.75 & \textbf{0.79} & 0.69 & \textbf{0.76} & 0.67 & 0.75 & 0.74 & 0.72 & 0.76\\
      DeepBlueAI~\cite{id3} & 0.74 & 0.81 & 0.75 & 0.74 & 0.72 & \textbf{0.73} & 0.67 & \textbf{0.68} & 0.77 & 0.77 & 0.75 & 0.76\\
   vuvko~\cite{id4}& 0.75 & \textbf{0.81} & \textbf{0.78} & 0.74 & 0.78 & 0.69 & \textbf{0.76} & 0.60 & \textbf{0.80} & \textbf{0.80} & \textbf{0.77} & \textbf{0.78}\\\vspace{-5mm}
-%   haoxl & 0.76 & 0.81 & 0.75 & 0.75 & 0.73 & 0.65 & 0.63 & 0.64 & 0.75 & 0.74 & 0.71 & 0.76\\
-%   lemoner20 & 0.75 & 0.81 & 0.74 & 0.75 & 0.72 & 0.67 & 0.62 & 0.65 & 0.75 & 0.74 & 0.72 & 0.75\\
-%   Early & 0.73 & 0.79 & 0.72 & 0.74 & 0.66 & 0.69 & 0.52 & 0.65 & 0.75 & 0.74 & 0.73 & 0.74\\
-%   bestone & 0.75 & 0.81 & 0.75 & 0.75 & 0.73 & 0.69 & 0.65 & 0.62 & 0.69 & 0.67 & 0.62 & 0.73\\
-%   danbo3004 & 0.72 & 0.78 & 0.72 & 0.72 & 0.71 & 0.70 & 0.53 & 0.56 & 0.71 & 0.72 & 0.71 & 0.73\\
-%   ten\textunderscore elven & 0.70 & 0.77 & 0.70 & 0.71 & 0.70 & 0.75 & 0.63 & 0.67 & 0.72 & 0.73 & 0.71 & 0.72\\
 \end{tabular}
 \end{table*}
-
-
-
-% No family overlap between set, meaning no identity overlap. /
-
-% In the end, both \emph{train} and \emph{val} are labeled, while \emph{test} remains \emph{blind}. Thus, participants have \emph{train} and \emph{val} for supervision, while \emph{test} is only to be processed for submissions (\ie not analyzed).
-
-
-% \subsubsection{Data Splits}\label{sec:task1:data}
-
-
-
 
 
 As part of pre-processing, faces for all three sets were encoded via Sphereface \ac{cnn}~\cite{Liu_2017_CVPR}  (\ie 512 D). All pre-processing and the model weights were from the original work.\footnote{\href{https://github.com/wy1iu/sphereface}{https://github.com/wy1iu/sphereface}} Also common, is the use of cosine similarity to determine closeness of a pair of facial features $p_1$ and $p_2$~\cite{nguyen2010cosine}. This is defined as
@@ -229,9 +189,7 @@ Scores were then either compared to threshold $\gamma$ (\ie $\text{cossim}(p_1, 
 
 
 \subsection{Kinship Verification}\label{sec:kinver}
-% \subsection{Problem statement and intended use}
 
-% Kinship verification is a \textit{one-to-one} (\ie boolean classification) problem. The goal is to determine whether a pair of faces are blood-relatives faces.
 Kinship verification aims to determine whether a pair of faces are blood relatives. This classical Boolean problem has two possible outcomes, KIN or NON-KIN (\ie true or false, respectively). Hence, this is the \textit{one-to-one} view of kin-based problems. The classical problem can be further extended by considering the type of kin relation between a pair of faces, rather than treating all kin relations equally~\cite{robinson2018recognize}.
 
 
@@ -240,8 +198,6 @@ Prior research mainly considered parent-child kinship types, \ie \ac{fd}, \ac{fs
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \subsubsection{Data Splits}
  \ac{fiw} supports eleven different relationship types that were used in \ac{rfiw} (Table~\ref{tbl:track1:counts}). The {\emph test} set had an equal number of positive and negative pairs and with no family (and, hence, subject identity) overlap between sets. 
 
@@ -260,8 +216,6 @@ $$
 \text{Acc.}_j = \frac{\text{\# correct predictions for j-th type}}{\text{Total \# of pairs for j-th type}},
 $$
 where $j^{th}\in\{\text{all 11 relationship types}\}$. Then, the the overall accuracy is calculated as a weighted sum (\ie weight by the pair count to determine the average accuracy).
-% \subsection{Evaluation Settings \& Metrics}
-% Verification accuracy was the metric used and reported. 
 
 \subsubsection{Baseline Experiments}
 The threshold was determined by the value that maximizes the accuracy on the  \emph{val} set. Results are listed in Table~\ref{tab:benchmark:track1}, with samples in Fig~\ref{fig:track1:samples}.
@@ -273,8 +227,6 @@ Tri-Subject Verification focuses on a different view of kinship verification-- t
 
 Triplet pairs consist of Father ({F}) / Mother ({M}) - Child ({C}) ({FMC}) pairs, where the child {C} could be either a Son ({S}) or a Daughter ({D}) (\ie triplet pairs are {FMS} and {FMD}).
 
-% \subsection{Intended Use}
-% Tri-subject verification, 
 
 \begin{table}[b]
     \centering
@@ -306,7 +258,6 @@ Triplet pairs consist of Father ({F}) / Mother ({M}) - Child ({C}) ({FMC}) pairs
 \subsubsection{Data Splits}
 
 
-% \par
 Following the procedure in \cite{qin2015tri}, we create positive (have kin relation) triplets by matching each husband-wife spouse pair with their biological children, and negative (no kin relation) triplets by shuffling the positive triplets until every spouse pair is matched with a child which is not theirs (Table~\ref{tbl:track2:counts}).
 Because the number of potential negative samples far exceeds the number of potential positive examples, we only generate one negative triplet for each positive triplet, again following the procedure of \cite{qin2015tri}. 
 
@@ -318,12 +269,6 @@ The post-processing is done by limiting the number of samples of any triplet $(F
 \subsubsection{Settings and metrics}
 Per convention in face verification, we offer 3 modes (\ie the same as in task 1 listed in Section~\ref{subsec:track1:settings}). The metric used is, again, verification accuracy, which is first calculated per triplet-pair type (\ie FMD and FMS). Then, the weighted sum (\ie average accuracy) determines the leader-board.
 
-% \begin{figure}[t!]
-% \centering
-%         \includegraphics[width = .8\linewidth]{figures/tri-montage-crop.pdf}
-%         \caption{Tri-subject pairs near the decision boundary (\ie threshold), and in cases predictions were correct and false. Each block shows sample of FMS (top rows) and FMD (bottom rows).}
-%         \label{fig:track2:montage}
-% \end{figure}
 
 
 \subsubsection{Baseline Results}
@@ -335,18 +280,15 @@ The threshold was found experimentally on the \emph{val} set. The threshold was 
 \begin{table}[b]
 \scriptsize
 \centering
-\caption {Tri-subject verification accuracy scores for T-II benchmark.}%\vspace{-2mm}
+\caption {Tri-subject verification accuracy scores for T-II benchmark.}
 \label{tab:benchmark:track2}
 \begin{tabular}{r|cc|c}
-%   \toprule
   &FMS & FMD & Avg. \\
   \midrule
   
   Sphereface~\cite{Liu_2017_CVPR} (baseline) & 0.68 & 0.68 & 0.68 \\ 
     stefhoer~\cite{id2} & 0.74 & 0.72 & 0.73 \\
-%   lemoner20   & 0.80 & 0.76 & 0.78 \\
   DeepBlueAI~\cite{id3}  & 0.77 & 0.76 & 0.77 \\
-%   Early  & 0.77 & 0.76 & 0.77 \\
  ustc-nelslip~\cite{id6}  & \textbf{0.80} & \textbf{0.78} & \textbf{0.79} \\
 \end{tabular}
 \end{table}
@@ -373,16 +315,7 @@ Kin information, as a search cue, can be leveraged to improve conventional FR se
 
 
 
-% \subsection{Intended Use}
 The protocol of T-3 could be used to find parents and other relatives of unknown, missing children. The gallery contains 31,787 facial images from 190 families (Fig.~\ref{fig:track3:counts}): inputs are subject labels (\ie probes), and outputs are ranked lists of all faces in the gallery. The number of relatives varies for each subject, ranging anywhere from 0 to 20+. Furthermore, probes have one-to-many samples-- the means of fusing samples of probes is an open research question. This \textit{many-to-many} task is currently setup in closed form (\ie every probe has relative(s) in gallery).
-%
-
-% \begin{figure}[t!]
-% \centering
-%         \includegraphics[width = \linewidth]{figures/track3-crop.pdf}
-%         \caption{Depiction of the protocol of T-3. Given a probe, consisting of one-to-many samples of that family member (Fig.~\ref{fig:track3:counts}), the task is then to find all family members in a gallery of faces. Specifically, provided the $k^{th}$ probe, the output is the $k^{th}$ ranked list of the subjects in the gallery. Here we show Brendan Lee, son of the legendary actor Bruce Lee, and the ranked list correctly returns rank 1 (his father, Bruce), rank 2 (his sister, Shannon), misses rank 3 (red), but then hits rank 4 with face of his grandfather (ao(english)).}
-%         \label{fig:track3:workflow}
-% \end{figure} 
 
 \subsubsection{Data Spits}
 This task will be composed of search subjects (\ie \textit{probes}) from different families. \textit{Probes} are supported by several samples of query subject, text description of family (\eg ethnicity, some relationships between selected members, etc.), and list of relatives present in \textit{gallery}. The \textit{test} set will only consist of sets of images for the probes. Diversity in terms of ethnicity is ensured for both sets. Again, three disjoint sets were split (Table~\ref{tbl:track3:counts}).
@@ -391,8 +324,6 @@ This task will be composed of search subjects (\ie \textit{probes}) from differe
 \begin{table}[b]
     \centering
     \caption{Counts for T-3: individuals (\textbf{I}), families (\textbf{F}), face samples (\textbf{S}).}
-    % \scriptsize
-    %\begin{adjustbox}{width=\linewidth}
     \begin{tabular}{p{.1in}m{.1in}ccc}
     & &Probe &Gallery &Total\\\hline
      \parbox[t]{2mm}{
@@ -422,7 +353,6 @@ This task will be composed of search subjects (\ie \textit{probes}) from differe
     \caption{Plot showing the face counts for each family in {\emph test} set of T-3. The probes have about 8 faces on average, while the number of family members in the gallery nears 20 on average, with an average of 170 faces in total.}
     \label{fig:track3:counts}
 \end{figure}
-% Participants will be provided a set of search images referred to as the \textit{evaluation gallery}. This corpus serves the search pool for training and testing and, hence, will be used to generate final submissions. Thus, no ground truth will be provided for the search pool and, hence, the \textit{evaluation gallery} will not contain faces of any members of families reserved for training. Participants are asked to only process \textit{evaluation gallery} when generating submissions. In addition, it is expected that no attempts at manipulating, learning, or reviewing these results will occur. In other words, self-evaluation should only be conducted only on the \textit{development gallery} and families making up the \textit{Development} set. We will score and report results for each submission-- Average Precision of each query subject (\ie family) will be provided separate; however, the Mean Average Precision be the used to determine standings (\ie comparing submissions). 
 %
 \subsubsection{Evaluation Settings} 
 Each subject (\ie probe) gets searched independently, with 190 in total: hence, 190 families make-up the \textit{test} set. Probes have one-to-many faces. Following template conventions of other \textit{many-to-many} face evaluations, facial images for unique subjects are separated by identity, with a gallery containing variable number of relatives, each with a variable number of faces~\cite{whitelam2017iarpa}.
@@ -461,19 +391,13 @@ Table \ref{tbl:t3:benchmarks} and shown in Fig.~\ref{fig:track3:montage}.
 %\Large
 	\centering
 	\caption{Performance ratings for Track 3.}
-% 	\begin{tabular}{c>{\raggedright\arraybackslash}p{4.2cm}c}
 	\begin{tabular}{c|cc} 
-	      \textbf{Methods}  &\textbf{mAP} & \textbf{Rank@5} \\ \hline %& \textbf{Settings}
+	      \textbf{Methods}  &\textbf{mAP} & \textbf{Rank@5} \\ \hline
 		  Baseline (Sphereface)~\cite{Liu_2017_CVPR} & 0.02 & 0.10	\\
-		  %(ID 3) & 0. & 0.	\\
-		  %early (ID ?) & 0.23 & 0.08	\\
-		  %HCMUS notweeb 1 (ID 9) & 0.06 & 0.29	\\
 		  HCMUS notweeb~\cite{id9} & 0.07 & 0.28	\\
 		  DeepBlueAI~\cite{id3} & 0.06 & 0.32	\\
 		  ustc-nelslip~\cite{id8} & 0.08 & 0.38	\\
 		  vuvko~\cite{id4} & \textbf{0.18} & \textbf{0.60}	\\
-		  %stefhoer & 0.00 & 0.04	\\
-		  %lemoner2 & 0.01 & 0.04	\\
 	\end{tabular}
 	\label{tbl:t3:benchmarks}
 \end{table}
@@ -515,33 +439,15 @@ Sample pairs in the T-1 challenge that were unanimously correctly and incorrectl
 \subsection{Team HCMUS}
 \emph{Team HCMUS}~\cite{id9} competed in Tracks I (kinship verification) and III (kinship search and retrieval). For extracting features the authors use a Siamese CNN with FaceNet (Inception-ResNet-v1) and with VGG-Face (Resnet-50) as the pre-trained models. FaceNet uses Triplet Loss as the main loss function in the training phase. The authors also implement ArcFace~\cite{deng2019arcface} - a family of loss functions based on the geodesic distance between feature vectors which aim to discriminate the latent representation of deep NNs. 
 
-% \subsection{Tri-subject verification (T2)}
-% See Fig.~\ref{fig:track2:samples:submitted}.
-% \subsection{Search \& retrieval (T3)}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \acresetall
 \section{Discussion}\label{sec:discussion}
 \subsection{A Broader Impact}
-%  along with the labels representing complex family structures of over 1,000 families, makes for many possibilities for future directions, each with high potential for impact. For starters, improving upon the benchmarks, which is the focus of the data challenge. Aside from evaluation based work, a sort of cross-discipline study (\eg nature-based) is too an interesting direction to take. Additionally, a more in-depth, advanced analysis of the data making up \ac{fiw} could also prove insightful, or, at the very least, help further characterize the data resource itself. The possible directions listed here are far from exhausted. In ways, it is fair to say that-- whether experimental, analytical, algorithmic, biological, practical-- it is difficult to say for sure tshe directions others will discover for \ac{fiw}.ss
-
-% We anticipate that the data challenge workshop itself will serve as the perfect opportunity to reflect on the current state in kinship recognition technologies, while addressing questions concerning future directions and next steps. Additionally, we expect our resources (\ie source code) will help lessen the learning curve for newcomers (\ie challenge the experts, while enabling newcomers).
-
-The fourth \ac{rfiw} gained fair attention. % to make submissions and publish papers on~\cite{} (\textcolor{blue}{cite accepted papers}). 
+The fourth \ac{rfiw} gained fair attention. 
 T-1, kinship verification, saw the most (10+ submissions). T-2 (\ie tri-subject) and T-3 (search and retrieval) were both supported for the first time by \ac{rfiw}, are more complex than the classic task of T-1, and are practically motivated. All submissions outscored baselines. 
 
-%(leader-board coming soon).
 
 The scope of kin-based problems spans much wider than \ac{rfiw}. Specifically, in application (\eg generative-based tasks~\cite{gao2019will, ozkan2018kinshipgan}) and experimental settings~\cite{mingaaai2020}, focuses on particular views of the visual kinship recognition problem. Tasks of \ac{rfiw} were thought to be appropriate, provided the difficulty and practicality; the question how best to formulate the problem is an open research question, in itself. 
-
-
-% As important as it is to motivate researchers with platforms such as \ac{rfiw}, it is equally, if not even more, important to allow for creativity and support efforts besides improvements on benchmarks. For this, we offered tracks for general paper submission. Unfortunately, neither track saw attention; nonetheless, we intend to continue support for all tracks of \ac{rfiw} in the future, but with improvements from lessons learned, along with the baseline of next time being that of the top score this time.
-
-
-
-
 
 
 
@@ -554,30 +460,11 @@ The scope of kin-based problems spans much wider than \ac{rfiw}. Specifically, i
        \vspace{-4mm}
 \end{figure}
 \subsection{Conclusion}\label{sec:conclusion}
-This paper presented the 2020 \ac{rfiw} challenge organized in conjunction with the \ac{fg}. The 2020 challenge is the fourth edition of the \ac{rfiw} annual evaluation. For this, we added 2 new tracks, tri-subject verification and search \& retrieval of missing children; the traditional kinship verification task continued to be supported as well. The \ac{fiw} dataset was used to pose each of the challenge tracks. As challenging it may be, many entries outperformed the ``vanilla'' baselines in all tasks. Regardless, in all three cases, there still exists much room for improvement. Accuracy on the Verification and Tri-subject has just begun to approach the 80\%; Search \& Retrieval further behind. Baseline code at \href{https://github.com/visionjo/pykinship}{github.com/visionjo/pykinship}.
-% In addition, source code for many of the methsods used will be made public as part of the upcoming \ac{fiw} API, lowering the barrier to entry for the kinship field.
-As we see it, the story of \ac{fiw} is still in its infancy.
+This paper presented the 2020 \ac{rfiw} challenge organized in conjunction with the \ac{fg}. The 2020 challenge is the fourth edition of the \ac{rfiw} annual evaluation. For this, we added 2 new tracks, tri-subject verification and search \& retrieval of missing children; the traditional kinship verification task continued to be supported as well. The \ac{fiw} dataset was used to pose each of the challenge tracks. As challenging it may be, many entries outperformed the ``vanilla'' baselines in all tasks. Regardless, in all three cases, there still exists much room for improvement. Accuracy on the Verification and Tri-subject has just begun to approach the 80\%; Search \& Retrieval further behind. Baseline code at \href{https://github.com/visionjo/pykinship}{github.com/visionjo/pykinship}. As we see it, the story of \ac{fiw} is still in its infancy.
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \section{ACKNOWLEDGMENTS}
-
-% The authors gratefully acknowledge the contribution of reviewers' efforts and valuable comments. Per usual, the success of the challenge depended much on the quality of reviews given by the program committee, which we could not have been happier with.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-% \addtolength{\textheight}{-3cm}   % This command serves to balance the column lengths
-                                  % on the last page of the document manually. It shortens
-                                  % the textheight of the last page by a suitable amount.
-                                  % This command does not take effect until the next page
-                                  % so it should come on the page before the last. Make
-                                  % sure that you do not shorten the textheight too much.
                                   
-                         {         
+                
+{         
 \bibliographystyle{ieee}
 
 \scriptsize
