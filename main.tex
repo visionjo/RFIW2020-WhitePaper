@@ -1,34 +1,12 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
-%
-% Slightly modified by X. Baró for FG2020
-%
-
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out
-                                                          % if you need a4paper
-% \documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4
-                                                          % paper
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf} 
 \usepackage{FG2020}
 
-\FGfinalcopy % *** Uncomment this line for the final submission
+\FGfinalcopy
 
 
 
-\IEEEoverridecommandlockouts                              % This command is only
-                                                          % needed if you want to
-                                                          % use the \thanks command
+\IEEEoverridecommandlockouts                             
 \overrideIEEEmargins
-% See the \addtolength command later in the file to balance the column lengths
-% on the last page of the document
-
-% The following packages can be found on http:\\www.ctan.org
-%\usepackage{graphics} % for pdf, bitmapped graphics files
-%\usepackage{epsfig} % for postscript graphics files
-%\usepackage{mathptmx} % assumes new font selection scheme installed
-%\usepackage{times} % assumes new font selection scheme installed
-%\usepackage{amsmath} % assumes amsmath package installed
-%\usepackage{amssymb}  % assumes amsmath package installed
 
 \usepackage{tabularx, booktabs, ragged2e}
 
@@ -38,7 +16,8 @@
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage{balance}
-\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks, citecolor=red, linkcolor=red, filecolor=magenta, urlcolor=blue]{hyperref}
+\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks, citecolor=blue, linkcolor=red, filecolor=magenta, urlcolor=blue]{hyperref}
+
 
 \usepackage{subfigure}
 
@@ -161,10 +140,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-\ac{rfiw}-- an annual large-scale, multi-track automatic kinship recognition evaluation-- supports various visual kin-based problems on scales much higher than ever before. Organized in conjunction with the \gls{fg} as a Challenge, \ac{rfiw} provides a platform for publishing original work and the gathering of experts for a discussion of the next steps. This paper summarizes the supported tasks (\ie kinship verification, tri-subject verification, and search \& retrieval of missing children) in the evaluation protocols, which include the practical motivation, technical background, data splits, metrics, and benchmark results. Furthermore, top submissions (\ie leader-board stats) are listed and reviewed as a high-level analysis on the state of the problem. In the end, the purpose of this paper is to describe the 2020 \ac{rfiw} challenge, end-to-end, along with forecasts in promising future directions.
+\ac{rfiw}-- an annual large-scale, multi-track automatic kinship recognition challenge supporting visual kin-based problems on scales larger than before. Organized in conjunction with the \ac{fg}, \ac{rfiw} provides a platform for publishing original work and the gathering of experts for a discussion of the next steps. This paper summarizes the supported tasks (\ie kinship verification, tri-subject verification, and search \& retrieval of missing children) in the evaluation protocols, which include the practical motivation, technical background, data splits, metrics, and benchmark results. Furthermore, top submissions (\ie leader-board stats) are listed and reviewed as a high-level analysis on the state of the problem. In the end, the purpose of this paper is to describe the 2020 \ac{rfiw} challenge, end-to-end, along with forecasts in promising future directions.
 
 \end{abstract}
-
+\hypersetup{citecolor=blue}
 \acresetall
 \glsresetall
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -253,7 +232,7 @@ Scores were then either compared to threshold $\gamma$ (\ie $\text{cossim}(p_1, 
 % \subsection{Problem statement and intended use}
 
 % Kinship verification is a \textit{one-to-one} (\ie boolean classification) problem. The goal is to determine whether a pair of faces are blood-relatives faces.
-The goal of kinship verification is to determine whether a pair of faces are blood relatives. This classical Boolean problem has two possible outcomes, KIN or NON-KIN (\ie true or false, respectively). Hence, this is the \textit{one-to-one} view of kin-based problems. The classical problem can be further extended by considering the type of kin relation between a pair of faces, rather than treating all kin relations equally.
+Kinship verification aims to determine whether a pair of faces are blood relatives. This classical Boolean problem has two possible outcomes, KIN or NON-KIN (\ie true or false, respectively). Hence, this is the \textit{one-to-one} view of kin-based problems. The classical problem can be further extended by considering the type of kin relation between a pair of faces, rather than treating all kin relations equally~\cite{robinson2018recognize}.
 
 
  
@@ -514,7 +493,7 @@ Sample pairs in the T-1 challenge that were unanimously correctly and incorrectl
 
 
 \subsection{Team DeepBlueAI}
-\emph{Team DeepBlueAI} used two pre-trained face \acs{cnn} networks (\ie VGG-Face trained on VGG2 and FaceNet trained on MSCeleb)~\cite{id3}. The \acs{cnn} were used to encode each face-- the two face encodings were then concatenated using different types of arithmetic~\cite{id6, id8}. In \cite{id3}, the distance between faces was then determined using euclidean distance. Also, SENet was swapped in for ResNet50 as the backbone for a modest boost in performance on the validation, but a slight drop on the test. Much like in~\cite{robinson2018visual}, \cite{id3} fine-tuned a \ac{cnn} using families as the classes (\ie the difference was the authors used the more recent Arcface, as opposed to Sphereface used in ~\cite{robinson2018visual}).
+\emph{Team DeepBlueAI} used two pre-trained \acp{cnn} (\ie VGG-Face~\cite{schroff2015facenet} trained on VGG2~\cite{cao2018vggface2} and FaceNet trained on MSCeleb~\cite{guo2016ms})~\cite{id3}. The \acs{cnn} were used to encode each face-- the two face encodings were then concatenated using different types of arithmetic~\cite{id6, id8}. In \cite{id3}, the distance between faces was then determined using euclidean distance. Also, SENet~\cite{iandola2016squeezenet} was swapped in for ResNet50 as the backbone for a modest boost in performance on the validation, but dropped on the test. Much like in~\cite{robinson2018visual}, \cite{id3} fine-tuned a \ac{cnn} using families as the classes (\ie the difference was the authors used Arcface, opposed to Sphereface as in~\cite{robinson2018visual}).
 \begin{figure}[t!]
     \centering
     \includegraphics[width =.9\linewidth]{figures/track1-samples-submitted-crop.pdf}
@@ -526,15 +505,15 @@ Sample pairs in the T-1 challenge that were unanimously correctly and incorrectl
 \emph{Team DeepBlueAI} tied for second in kinship verification, T-1 (Table~\ref{tab:benchmark:track1}), and second to best in T-2 (Tablee~\ref{tab:benchmark:track2}).
 
 \subsection{Team Ustc-Nelslip}
-\emph{Team Ustc-nelslip}~\cite{id6} also used a Siamese network, i.e. encoding features from images in parallel with weights shared across the two image processings. For their backbone they used either ResNet50 or SENNet50, both pre-trained on the VGGFace2 dataset. In addition, team ustc-nelslip also employed two loss functions - binary cross-entropy and focal loss. Finally, they fused the feature vectors with two algebraic formulae leading to \( 2 \times 2 \times 2 = 8 \) independent "models." A unique feature was the construction of a "jury system" to combine the calculations of different models to improve accuracy.
+\emph{Team Ustc-nelslip}~\cite{id6} also used a Siamese network, i.e. encoding features from images in parallel with weights shared across the two image processings. ResNet50 or SENet50 was used as the backbone, both pre-trained on VGGFace2~\cite{cao2018vggface2}. In addition, team ustc-nelslip also employed two loss functions - binary cross-entropy and focal loss. Finally, they fused the feature vectors with two algebraic formulae leading to \( 2 \times 2 \times 2 = 8 \) independent "models." A unique feature was the construction of a "jury system" to combine outputs of different models to improve accuracy.
 
 \emph{Team Ustc-nelslip} scored highest in T-2 (Table~\ref{tab:benchmark:track2}). 
 
 \subsection{Team Stefhoer}
-\emph{Team Stefhoer}~\cite{id2} placed particular emphasis on the the dependence of family identification accuracy for cross-gender versus same-gender pairs of images. These researchers constructed a Kinship comparator module that consisted of eleven separate "local expert networks" connected in series. These eleven networks corresponded to the eleven types of family relationships (\eg father-son, brother-sister, \etc) in the challenge. Perhaps as a result of this focus team Stefhoer registered the highest score in the subcategories of father-daughter and mother-son identification (within T-1).
+\emph{Team Stefhoer}~\cite{id2} placed particular emphasis on the the dependence of family identification accuracy for cross-gender versus same-gender pairs of images. These researchers constructed a Kinship \emph{comparator} module that consisted of eleven separate "local expert networks" connected in series. These eleven networks corresponded to the eleven types of family relationships (\eg father-son and brother-sister) in the challenge. Perhaps as a result of this focus team Stefhoer registered the highest score in the subcategories of father-daughter and mother-son identification (within T-1).
 
 \subsection{Team HCMUS}
-\emph{Team HCMUS} \cite{id9} competed in Tracks I (kinship verification) and III (kinship search and retrieval). For extracting features the authors use a Siamese CNN with FaceNet (Inceptoion-ResNet-v1) and with VGG-Face-Resnet-50 as the pre-trained models. FaceNet uses Triplet Loss as the main loss function in the training phase. The authors also implement ArcFace~\cite{deng2019arcface} - a family of loss functions based on the geodesic distance between feature vectors which aim to discriminate the latent representation of deep NNs. 
+\emph{Team HCMUS}~\cite{id9} competed in Tracks I (kinship verification) and III (kinship search and retrieval). For extracting features the authors use a Siamese CNN with FaceNet (Inception-ResNet-v1) and with VGG-Face (Resnet-50) as the pre-trained models. FaceNet uses Triplet Loss as the main loss function in the training phase. The authors also implement ArcFace~\cite{deng2019arcface} - a family of loss functions based on the geodesic distance between feature vectors which aim to discriminate the latent representation of deep NNs. 
 
 % \subsection{Tri-subject verification (T2)}
 % See Fig.~\ref{fig:track2:samples:submitted}.
@@ -591,17 +570,19 @@ As we see it, the story of \ac{fiw} is still in its infancy.
 
 
 
-\addtolength{\textheight}{-3cm}   % This command serves to balance the column lengths
+% \addtolength{\textheight}{-3cm}   % This command serves to balance the column lengths
                                   % on the last page of the document manually. It shortens
                                   % the textheight of the last page by a suitable amount.
                                   % This command does not take effect until the next page
                                   % so it should come on the page before the last. Make
                                   % sure that you do not shorten the textheight too much.
                                   
-                                  
+                         {         
 \bibliographystyle{ieee}
+
+\scriptsize
 \balance
 \bibliography{rfiw2020} 
 
-
+}
 \end{document}
